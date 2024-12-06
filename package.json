@@ -1,0 +1,11 @@
+{
+  "devDependencies": {
+    "typescript": "^5.7.2"
+  },
+  "scripts": {
+    "start": "npx ts-node index.ts"
+  },
+  "dependencies": {
+    "dotenv": "^16.4.7"
+  }
+}
