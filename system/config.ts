@@ -5,11 +5,13 @@ class Config {
     private BearerToken: string = ""
     private ApiUrl: string = ""
     private BotUid: string = ""
+    private OpenAiToken: string = ""
 
     constructor() {
         this.BearerToken = this.required(process.env["BEARER_TOKEN"], 'BEARER_TOKEN')
         this.ApiUrl = this.required(process.env["API_URL"], 'API_URL')
         this.BotUid = this.required(process.env["BOT_UID"], 'BOT_UID')
+        this.OpenAiToken = this.required(process.env["OPENAI_TOKEN"], 'OPENAI_TOKEN')
     }
 
     required(v:any, name: string): any {
@@ -29,6 +31,10 @@ class Config {
 
     getBotUid(): string {
         return this.BotUid
+    }
+
+    getOpenAiToken(): string {
+        return this.OpenAiToken
     }
 }
 
