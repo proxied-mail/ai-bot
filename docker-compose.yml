@@ -7,5 +7,3 @@ services:
     ports:
       - "5222:5222"
     restart: always
-    volumes:
-      - .:/usr/src/app
