@@ -5,6 +5,9 @@ FROM node:21-alpine
 WORKDIR /usr/src/app
 
 ARG CACHEBUST=10
+ENV NODE_ENV=development
+
+
 
 
 # Copy package.json and package-lock.json (if available)
