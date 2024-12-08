@@ -11,7 +11,7 @@ ARG CACHEBUST=5
 COPY package*.json ./
 
 # Install dependencies
-RUN npm install  && npm install dotenv
+RUN npm install
 
 
 # Copy the rest of the application code
