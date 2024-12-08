@@ -1,4 +1,4 @@
-FROM node:18-bullseye
+FROM node:20.8.0-alpine3.17
 
 # Create and set the working directory
 WORKDIR /usr/src/app
@@ -7,7 +7,7 @@ WORKDIR /usr/src/app
 COPY package*.json ./
 
 # Install the dependencies
-RUN  npm install
+RUN npm install
 
 # Copy the rest of the application code
 COPY . .
