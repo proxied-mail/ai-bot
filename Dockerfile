@@ -7,7 +7,7 @@ WORKDIR /usr/src/app
 COPY package*.json ./
 
 # Install the dependencies
-RUN ulimit -u 1024 && npm install
+RUN  npm install
 
 # Copy the rest of the application code
 COPY . .
