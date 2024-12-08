@@ -8,6 +8,7 @@
   },
   "dependencies": {
     "dotenv": "^16.4.7",
+    "dotenv-extended": "^2.9.0",
     "ts-node": "^10.9.2"
   }
 }
