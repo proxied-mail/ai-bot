@@ -4,7 +4,7 @@ FROM node:16-alpine
 # Set the working directory
 WORKDIR /usr/src/app
 
-ARG CACHEBUST=10
+ARG CACHEBUST=12
 ENV NODE_ENV=development
 
 COPY . .
