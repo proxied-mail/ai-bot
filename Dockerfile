@@ -11,7 +11,7 @@ ARG CACHEBUST=3
 COPY package*.json ./
 
 # Install dependencies
-RUN npm install
+RUN npm install && echo "Dependencies installed"
 
 # Copy the rest of the application code
 COPY . .
