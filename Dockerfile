@@ -7,18 +7,12 @@ WORKDIR /usr/src/app
 ARG CACHEBUST=10
 ENV NODE_ENV=development
 
-
-
-
-# Copy package.json and package-lock.json (if available)
-COPY package*.json ./
+COPY . .
 
 # Install dependencies
 RUN npm install  --no-cache
 
-
 # Copy the rest of the application code
-COPY . .
 
 # Expose the port the application will run on
 EXPOSE 5222
