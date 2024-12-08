@@ -4,6 +4,9 @@ FROM node:21-alpine
 # Set the working directory
 WORKDIR /usr/src/app
 
+ARG CACHEBUST=1
+
+
 # Copy package.json and package-lock.json (if available)
 COPY package*.json ./
 
