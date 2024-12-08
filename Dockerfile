@@ -10,7 +10,7 @@ ENV NODE_ENV=development
 COPY . .
 
 # Install dependencies
-RUN npm install  --no-cache
+RUN npm install  && npm install typescript -g
 
 # Copy the rest of the application code
 
