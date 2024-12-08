@@ -11,7 +11,7 @@ ARG CACHEBUST=5
 COPY package*.json ./
 
 # Install dependencies
-RUN npm install
+RUN npm install  --no-cache
 
 
 # Copy the rest of the application code
