@@ -1,11 +1,15 @@
 {
   "devDependencies": {
+    "@types/node": "^22.10.1",
     "typescript": "^5.7.2"
   },
   "scripts": {
     "start": "npx ts-node index.ts"
   },
   "dependencies": {
-    "dotenv": "^16.4.7"
+    "dotenv": "^16.4.7",
+    "dotenv-cli": "^7.4.4",
+    "dotenv-extended": "^2.9.0",
+    "ts-node": "^10.9.2"
   }
 }

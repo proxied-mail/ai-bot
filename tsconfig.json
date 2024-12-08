@@ -1,9 +1,11 @@
 {
   "compilerOptions": {
     "target": "ESNext",
-    "moduleResolution": "Node",
+    "moduleResolution": "node",
     "esModuleInterop": true,
-    "module": "esnext"
+    "module": "CommonJS",
+    "types": ["node"],
+    "skipLibCheck": true
   },
   "ts-node": {
     // these options are overrides used only by ts-node
