@@ -1,20 +1,17 @@
-# Use the official Node.js LTS image as the base
-FROM node:16-alpine
+FROM node:21
 
-# Set the working directory
+# Create and set the working directory
 WORKDIR /usr/src/app
 
-ARG CACHEBUST=12
-ENV NODE_ENV=development
+# Copy the package.json and package-lock.json files
+COPY package*.json ./
 
-COPY . .
-
-# Install dependencies
-RUN npm install  && npm install typescript -g
+# Install the dependencies
+RUN npm install
 
 # Copy the rest of the application code
+COPY . .
 
-# Expose the port the application will run on
 EXPOSE 5222
 
 # Define the command to run the application
