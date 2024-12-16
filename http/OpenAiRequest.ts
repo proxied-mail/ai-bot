@@ -8,9 +8,15 @@ type Messages = {
     content: string
 }
 
-async function OpenAiRequest(token: string, messages: Messages[]): Promise<string> {
+async function OpenAiRequest(token: string, messages: Messages[], gptModel: string): Promise<string> {
 
-    console.log("Request to OpenAI")
+
+    const models = {
+        'gpt-3.5-turbo': "gpt-3.5-turbo",
+        'gpt-4.0': 'gpt-4',
+        'gpt-4.0-min': "gpt-4-turbo",
+    }
+    gptModel = models[gptModel] ?? 'gpt-3.5-turbo'
 
     const response = await fetch('https://api.openai.com/v1/chat/completions', {
         method: 'POST',
@@ -19,7 +25,7 @@ async function OpenAiRequest(token: string, messages: Messages[]): Promise<strin
             'Content-Type': 'application/json'
         },
         body: JSON.stringify({
-            model: "gpt-3.5-turbo",
+            model: gptModel,
             messages: messages
         })
     });

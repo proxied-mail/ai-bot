@@ -36,7 +36,8 @@ type ProxyBindingBots = {
     status: number,
     session_length: number,
     config: {
-        "prompt": string
+        "prompt": string,
+        "gpt3_token": string | null,
     } | object
 }
 
@@ -79,9 +80,12 @@ const ProcessMessages = async (c:Config, store: ConversationStorage) => {
 
             console.log(store)
 
+            let gptModel = json["proxyBindingBots"][proxyBindingBotId]["config"]["model"] ?? 'gpt-3.5-turbo'
+
             let responseGpt = await OpenAiRequest(
                 c.getOpenAiToken(),
-                store.getConversation(conversationId).getMessages()
+                store.getConversation(conversationId).getMessages(),
+                gptModel
             )
 
             store.push(conversationId, new ConversationMessage(
