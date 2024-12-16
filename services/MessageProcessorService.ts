@@ -89,6 +89,7 @@ const ProcessMessages = async (c:Config, store: ConversationStorage) => {
                 responseGpt
             ))
 
+            responseGpt = responseGpt.replace(/\n/g, "<br/>")
             replyTo(id, c, responseGpt)
         }
 

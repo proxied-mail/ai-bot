@@ -35,6 +35,8 @@ async function OpenAiRequest(token: string, messages: Messages[]): Promise<strin
     const data = await response.json();
     const messageContent = data.choices[0].message.content;
 
+    console.log(data.choices[0])
+
     return messageContent
 }
 
