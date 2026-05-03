@@ -5,6 +5,47 @@ import {ReplyToMessagePayload} from "../dto/ReplyToMessagePayload";
 import {ConversationStorage} from "./ConversationStorage";
 import {ConversationMessage} from "../dto/ConversationDto";
 import {OpenAiRequest} from "../http/OpenAiRequest";
+import {GetEmailDetailsRequest} from "../http/GetEmailDetailsRequest";
+
+type EmailPayload = {
+    To: string,
+    From: string,
+    Subject: string,
+    recipient: string,
+    sender: string,
+    'body-html': string,
+    'body-plain': string,
+    'stripped-html': string,
+    'stripped-text': string,
+    attachments: any[],
+    snapshot: string,
+    'Content-Type': string,
+    'Mime-Version': string,
+    Date: string,
+    headers: any,
+    real_recipient: string
+}
+
+type EmailDetailsAttributes = {
+    recipient_email: string,
+    sender_email: string,
+    payload: EmailPayload,
+    subject: string,
+    attachments: any[],
+    is_processed: boolean,
+    created_at: string,
+    updated_at: string
+}
+
+type EmailDetailsData = {
+    type: string,
+    id: string,
+    attributes: EmailDetailsAttributes
+}
+
+type EmailDetailsResponse = {
+    data: EmailDetailsData
+}
 
 type PmApiMessageDetails = {
     id: string,
@@ -70,9 +111,13 @@ const ProcessMessages = async (c:Config, store: ConversationStorage) => {
                 store.push(conversationId, conversationFirstMessage)
             }
 
-            let message: PmApiMessageDetails = json["messages"][i]["message"]
-            let id = message.id
-            let messagePlain = message["body-plain"]
+            // Fetch email details from API
+            let emailId = json["messages"][i].id
+            const emailDetailsResponse = await GetEmailDetailsRequest(emailId, c)
+            const emailDetails: EmailDetailsResponse = await emailDetailsResponse.json()
+
+            let id = emailId
+            let messagePlain = emailDetails.data.attributes.payload["body-plain"]
 
             let conversationMessage: ConversationMessage = new ConversationMessage(
                 "user",
