@@ -80,7 +80,7 @@ const ProcessMessages = async (c:Config, store: ConversationStorage) => {
 
             console.log(store)
 
-            let gptModel = json["proxyBindingBots"][proxyBindingBotId]["config"]["model"] ?? 'gpt-3.5-turbo'
+            let gptModel = json["proxyBindingBots"][proxyBindingBotId]["config"]["model"] ?? 'gpt-4.1-mini'
 
             let responseGpt = await OpenAiRequest(
                 c.getOpenAiToken(),
