@@ -53,6 +53,8 @@ const ProcessMessages = async (c:Config, store: ConversationStorage) => {
         }
 
         for (let i in json["messages"] as PmApiMessage[]) {
+            console.log("Received messages:" + json["messages"])
+
             let proxyBindingBotId: string = json["messages"][i].proxyBindingBotId
             let prompt: string = json["proxyBindingBots"][proxyBindingBotId]["config"]["prompt"]
             if (!prompt) {
