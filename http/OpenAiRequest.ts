@@ -12,11 +12,14 @@ async function OpenAiRequest(token: string, messages: Messages[], gptModel: stri
 
 
     const models = {
-        'gpt-3.5-turbo': "gpt-4.1-mini",
-        'gpt-4.0': 'gpt-4.1',
-        'gpt-4.0-min': "gpt-4.1-mini",
+        'gpt-3.5-turbo': "gpt-5.4-mini",
+        'gpt-4.0': 'gpt-5.5',
+        'gpt-4.0-min': "gpt-5.4-mini",
+        'gpt-5.5': 'gpt-5.5',
+        'gpt-5.4': 'gpt-5.4',
+        'gpt-5.4-mini': 'gpt-5.4-mini',
     }
-    gptModel = models[gptModel] ?? 'gpt-4.1-mini'
+    gptModel = models[gptModel] ?? 'gpt-5.4-mini'
 
     const response = await fetch('https://api.openai.com/v1/chat/completions', {
         method: 'POST',
