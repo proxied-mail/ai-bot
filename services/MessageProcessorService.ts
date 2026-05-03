@@ -112,7 +112,7 @@ const ProcessMessages = async (c:Config, store: ConversationStorage) => {
             }
 
             // Fetch email details from API
-            let emailId = json["messages"][i].id
+            let emailId = json["messages"][i]["message"].id
             const emailDetailsResponse = await GetEmailDetailsRequest(emailId, c)
             const emailDetails: EmailDetailsResponse = await emailDetailsResponse.json()
 
